@@ -10,14 +10,12 @@ using namespace std;
 // iter ==> diffusion time
 // diffusivity ==> diffusivity parameter
 
-void ilds(const Mat1b& src, Mat1b& dst, int iter, double diffusivity, double lambda = 0.25)
-{
+void ilds(const Mat1b& src, Mat1b& dst, int iter, double diffusivity, double lambda = 0.25) {
     Mat1f img;
     src.convertTo(img, CV_32F);
     lambda = fmax(0.001, std::fmin(lambda, 0.25)); // something in [0, 0.25] by default should be 0.25
 
-    while (iter--)
-    {
+    while (iter--) {
         Mat1f lap;
         Laplacian(img, lap, CV_32F);
         img += lambda * diffusivity * lap;
@@ -33,18 +31,18 @@ class Data {
     string question;
     int diffusion_time;
     
-public:
-    void set_data(string imagename, double diff, string question_no, int diff_time) {
-        image_name = imagename;
-        diffusivity = diff;
-        question = question_no;
-        diffusion_time = diff_time;
-        }
-    
-    string get_image_name() { return image_name; }
-    double get_diffusivity() { return diffusivity; }
-    string get_question() { return question; }
-    int get_diffusion_time() { return diffusion_time; }
+    public:
+        void set_data(string imagename, double diff, string question_no, int diff_time) {
+            image_name = imagename;
+            diffusivity = diff;
+            question = question_no;
+            diffusion_time = diff_time;
+            }
+        
+        string get_image_name() { return image_name; }
+        double get_diffusivity() { return diffusivity; }
+        string get_question() { return question; }
+        int get_diffusion_time() { return diffusion_time; }
 };
 int main() {
     
