@@ -1,4 +1,4 @@
-# Isotropic-Linear-Diffusion-Smoothing
+# Isotropic-Linear-Diffusion-Smoothing-C++
 
 The code for Isotropic Linear PDE is written in C++ language. Running this code will require C++ compiler and opencv library installed in the system.
 
